@@ -1,18 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { AddtaskComponent } from './task/addtask/addtask.component';
+import { ViewtaskComponent } from './task/viewtask/viewtask.component';
+import { HomeComponent } from './home/home.component';
+import { TaskListComponent } from './task/task-list/task-list.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    AddtaskComponent,
+    ViewtaskComponent,
+    HomeComponent,
+    TaskListComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
