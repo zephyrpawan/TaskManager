@@ -2,7 +2,7 @@ import { Task } from './task.model';
 import { Subject } from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpClient } from '@angular/common/http';
-import { Injectable } from '../../../node_modules/@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({providedIn: 'root'})
 export class TaskService {

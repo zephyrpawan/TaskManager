@@ -9,7 +9,9 @@ import { HeaderComponent } from './header/header.component';
 import { AddtaskComponent } from './task/addtask/addtask.component';
 import { HomeComponent } from './home/home.component';
 import { TaskListComponent } from './task/task-list/task-list.component';
-import { FilterPipe } from './task/filter.pipe';
+import { FilterPipe } from './task/task-list/filter.pipe';
+import { FilterNumPipe } from './task/task-list/filter-num.pipe';
+import { FilterNumMaxPipe } from './task/task-list/filter-num-max.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FilterPipe } from './task/filter.pipe';
     AddtaskComponent,
     HomeComponent,
     TaskListComponent,
-    FilterPipe
+    FilterPipe,
+    FilterNumPipe,
+    FilterNumMaxPipe
   ],
   imports: [
     BrowserModule,

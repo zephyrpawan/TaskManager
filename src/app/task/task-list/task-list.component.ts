@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges } from '@
 import { Task } from '../task.model';
 import { TaskService } from '../task.service';
 import { Subscription } from 'rxjs';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -15,11 +15,11 @@ export class TaskListComponent implements OnInit {
   taskToEnd: Task;
 
   filteredTask = '';
-  filteredPriorityMin: number;
-  filteredPriorityMax = null;
-  filteredParentTask = null;
-  filteredStartDate = null;
-  filteredEndDate = null;
+  filteredPriorityMin = 0;
+  filteredPriorityMax = 30;
+  filteredParentTask = '';
+  filteredStartDate = '';
+  filteredEndDate = '';
 
   private tasksSub: Subscription;
   private taskSrchByNameSub: Subscription;
@@ -35,7 +35,6 @@ export class TaskListComponent implements OnInit {
   }
 
   onEndTask(id: string) {
-  console.log(id);
   this.taskService.getTask(id).subscribe(taskData => {
     this.taskToEnd = new Task(taskData._id, taskData.parentId, taskData.taskName, taskData.startDate, 'Task Ended', taskData.priority);
     this.taskService.updateTask(this.taskToEnd);

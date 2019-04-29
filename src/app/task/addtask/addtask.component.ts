@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Task } from '../task.model';
 import { TaskService } from '../task.service';
-import { Router, ActivatedRoute, ParamMap } from '../../../../node_modules/@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-addtask',

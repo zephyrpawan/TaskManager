@@ -99,7 +99,14 @@
 
   <div class="row" id=taskView_div>
     <div class="col-sm-12">
-        <div class="col" *ngFor="let task of tasks">
+        <div class="col"
+        *ngFor="let task of tasks |
+          filter: filteredTask:'taskName' |
+          filter: filteredParentTask: 'parentId' |
+          filter: filteredStartDate: 'startDate' |
+          filter: filteredEndDate : 'endDate' |
+          filterNum: filteredPriorityMin: 'priority' |
+          filterNumMax: filteredPriorityMax: 'priority'">
           <div class="row">
             <div class="col-sm-3">
               <div class="row">
