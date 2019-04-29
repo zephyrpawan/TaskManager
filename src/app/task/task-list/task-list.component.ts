@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Task } from '../task.model';
 import { TaskService } from '../task.service';
 import { Subscription } from 'rxjs';
@@ -10,9 +10,19 @@ import { Router } from '../../../../node_modules/@angular/router';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+
   tasks: Task[] = [];
   taskToEnd: Task;
+
+  filteredTask = '';
+  filteredPriorityMin: number;
+  filteredPriorityMax = null;
+  filteredParentTask = null;
+  filteredStartDate = null;
+  filteredEndDate = null;
+
   private tasksSub: Subscription;
+  private taskSrchByNameSub: Subscription;
 
   constructor(private taskService: TaskService, private router: Router) { }
 
@@ -24,23 +34,23 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-onEndTask(id: string) {
+  onEndTask(id: string) {
+  console.log(id);
   this.taskService.getTask(id).subscribe(taskData => {
     this.taskToEnd = new Task(taskData._id, taskData.parentId, taskData.taskName, taskData.startDate, 'Task Ended', taskData.priority);
     this.taskService.updateTask(this.taskToEnd);
   });
-}
+  }
 
-onDeleteTask(id: string) {
+  onDeleteTask(id: string) {
   this.taskService.deleteTask(id);
-}
+  }
 
-alertReadOnly() {
+  alertReadOnly() {
   alert('Task already ended, unable to edit!');
-}
+  }
 
   ngDestroy() {
     this.tasksSub.unsubscribe();
   }
-
 }

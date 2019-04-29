@@ -68,4 +68,5 @@ export class TaskService {
   getTaskUpdateListener() {
     return this.tasksUpdated.asObservable();
   }
+
 }

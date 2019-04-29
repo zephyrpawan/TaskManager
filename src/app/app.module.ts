@@ -7,17 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AddtaskComponent } from './task/addtask/addtask.component';
-import { ViewtaskComponent } from './task/viewtask/viewtask.component';
 import { HomeComponent } from './home/home.component';
 import { TaskListComponent } from './task/task-list/task-list.component';
-import { FilterPipe } from './filter.pipe';
+import { FilterPipe } from './task/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AddtaskComponent,
-    ViewtaskComponent,
     HomeComponent,
     TaskListComponent,
     FilterPipe
