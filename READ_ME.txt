@@ -4,6 +4,8 @@ http://mean-fsd-task-manager.s3-website.us-east-2.amazonaws.com/
 
 STEPS TO HOST TASK MANAGER APPLICATION LOCALLY
 
+Run npm install and then....
+
 1) Starting MongoDB database
 
 	  i) Open command prompt and CD to mongodb bin folder, example:-  C:\Users\Admin\Desktop\FSD MEAN PAWAN\mongodb\bin
