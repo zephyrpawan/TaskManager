@@ -4,6 +4,10 @@ import {map} from 'rxjs/operators';
 import {HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { environment } from '../../environments/environment';
+
+const BACKEND_URL = environment.apiURL;
+
 @Injectable({providedIn: 'root'})
 export class TaskService {
   private tasks: Task[] = [];
@@ -12,7 +16,7 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   getTasks() {
-    this.http.get<{message: string, tasks: any}>('http://localhost:3000/api/getTasks')
+    this.http.get<{message: string, tasks: any}>( BACKEND_URL + 'getTasks')
       .pipe(map((taskData) => {
         return taskData.tasks.map(task => {
           return {
@@ -34,11 +38,11 @@ export class TaskService {
   getTask(id: string) {
     return this.http
     .get<{_id: string, taskName: string, parentId: string, startDate: string, endDate: string, priority: number, __v: any}>
-    ('http://localhost:3000/api/editTask/' + id);
+    (BACKEND_URL + 'editTask/' + id);
   }
 
   addTask(task: Task) {
-    this.http.post<{message: string}>('http://localhost:3000/api/postTask', task)
+    this.http.post<{message: string}>(BACKEND_URL + 'postTask', task)
       .subscribe((resData) => {
         this.tasks.push(task);
         this.tasksUpdated.next([...this.tasks]);
@@ -46,7 +50,7 @@ export class TaskService {
   }
 
   updateTask(task: Task) {
-    this.http.put('http://localhost:3000/api/editTask/' + task.id, task)
+    this.http.put(BACKEND_URL + 'editTask/' + task.id, task)
       .subscribe(response => {
         const updatedTasks = [...this.tasks];
         const oldTaskIndex = updatedTasks.findIndex(t => t.id === task.id);
@@ -57,7 +61,7 @@ export class TaskService {
   }
 
   deleteTask(taskId: string) {
-    this.http.delete('http://localhost:3000/api/deleteTask/' + taskId)
+    this.http.delete(BACKEND_URL + 'deleteTask/' + taskId)
     .subscribe(() => {
       const updatedTasks = this.tasks.filter(task => task.id !== taskId);
       this.tasks = updatedTasks;
